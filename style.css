@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Header styling */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center; /* Center align text */
+}
+
+/* Navigation styling */
+nav ul {
+    list-style: none;
+    text-align: center; /* Center align list items */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center align flex items */
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+/* Main content styling */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Listing styling */
+.listing {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0; /* Adjust margin for better spacing */
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+}
+
+section {
+    max-width: 300px; /* Set a fixed width for the photo gallery */
+    margin-left: 20px; /* Add some margin to separate from the main content */
+}
+
+.photo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo {
+    margin-bottom: 10px;
+}
+
+.listing img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive image styling */
+@media (max-width: 600px) {
+    .listing {
+        grid-template-columns: 1fr; /* Adjust columns for small screens */
+    }
+}

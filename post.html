@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<title>Post a Listing</title>
+<body>
+    <header>
+        <h1>Post a Listing</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="view.html">View Listings</a></li>
+                <li><a href="post.html">Post a Listing</a></li>
+                <li><a href="members.html">Members</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Post Your Listing</h2>
+            <form id="listingForm">
+                <label for="restaurantName">Restaurant Name:</label>
+                <input type="text" id="restaurantName" name="restaurantName" required>
+                
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+                
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" required>
+                
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                
+                <button type="submit">Post Listing</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Handle form submission
+        const listingForm = document.getElementById('listingForm');
+
+        listingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get input values
+            const restaurantName = document.getElementById('restaurantName').value;
+            const description = document.getElementById('description').value;
+            const price = document.getElementById('price').value;
+            const image = document.getElementById('image').value; // You should handle file uploads differently
+
+            // Create a new listing object
+            const newListing = {
+                restaurantName,
+                description,
+                price,
+                image // You might want to store the file path or use a different approach for file uploads
+            };
+
+            // Get the existing listings from local storage or initialize an empty array
+            const listings = JSON.parse(localStorage.getItem('listings')) || [];
+
+            // Add the new listing to the array
+            listings.push(newListing);
+
+            // Save the updated array to local storage
+            localStorage.setItem('listings', JSON.stringify(listings));
+
+            // Redirect to the "View Listings" page
+            window.location.href = 'view.html';
+        });
+    </script>
+</body>
+</html 

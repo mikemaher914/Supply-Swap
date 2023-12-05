@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<title>Listings</title>
+<body>
+    <header>
+        <h1>View Listings</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="view.html">View Listings</a></li>
+                <li><a href="post.html">Post a Listing</a></li>
+                <li><a href="members.html">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="listings">
+            <!-- Listings will be displayed here using JavaScript -->
+        </section>
+    </main>
+
+    <script>
+        // Get the listings from local storage
+        const listings = JSON.parse(localStorage.getItem('listings')) || [];
+
+        // Function to display listings
+        function displayListings() {
+            const listingsContainer = document.getElementById('listings');
+
+            if (listings.length === 0) {
+                listingsContainer.innerHTML = '<p>No listings available.</p>';
+            } else {
+                listingsContainer.innerHTML = ''; // Clear the container
+                listings.forEach((listing, index) => {
+                    const listingElement = document.createElement('div');
+                    listingElement.classList.add('listing');
+                    listingElement.innerHTML = `
+                        <h2>${listing.restaurantName}</h2>
+                        <p>Description: ${listing.description}</p>
+                        <p>Price: $${listing.price}</p>
+                        <img src="${listing.image}" alt="${listing.restaurantName}">
+                    `;
+                    listingsContainer.appendChild(listingElement);
+                });
+            }
+        }
+
+        // Initial display of listings
+        displayListings();
+    </script>
+</body>
+</html>
